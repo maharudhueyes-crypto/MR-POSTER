@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: poster-app
+    runtime: node
+    plan: starter
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    disk:
+      name: data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: DATA_DIR
+        value: /var/data
+      - key: BASE_URL
+        sync: false
+      - key: RZP_KEY
+        sync: false
+      - key: RZP_SECRET
+        sync: false
+      - key: RZP_PLAN_ID
+        sync: false
+      - key: WEBHOOK_SECRET
+        sync: false
